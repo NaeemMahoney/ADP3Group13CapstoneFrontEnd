@@ -11,4 +11,9 @@ public class GenericHelper {
     {
         return UUID.randomUUID().toString();
     }
+
+    public static boolean validNumber(String Number) {
+        String number = "[0-9]+";
+        return Number.matches(number);
+    }
 }

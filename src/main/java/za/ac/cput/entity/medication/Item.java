@@ -14,7 +14,7 @@ public class Item {
     @Id
     private String itemID;
     private String itemName, itemType;
-    private double itemPrice;
+    private double itemPrice, itemStock;
 
     private Item(){}
 
@@ -23,6 +23,7 @@ public class Item {
         this.itemName=builder.itemName;
         this.itemType=builder.itemType;
         this.itemPrice=builder.itemPrice;
+        this.itemStock=builder.itemStock;
     }
 
     public String getItemID() {
@@ -40,11 +41,16 @@ public class Item {
     public double getItemPrice() {
         return itemPrice;
     }
+
+    public double getItemStock() {
+        return itemStock;
+    }
+
     //Builder for Item Entity
     public static class Builder{
         private String itemID;
         private String itemName, itemType;
-        private double itemPrice;
+        private double itemPrice, itemStock;
 
         public Builder itemID(String itemID){
             this.itemID = itemID;
@@ -66,6 +72,11 @@ public class Item {
             return this;
         }
 
+        public Builder itemStock(double itemStock){
+            this.itemStock = itemStock;
+            return this;
+        }
+
         public Item builder(){
             return new Item(this);
         }
@@ -75,6 +86,7 @@ public class Item {
             this.itemName = item.itemName;
             this.itemPrice = item.itemPrice;
             this.itemType = item.itemType;
+            this.itemStock = item.itemStock;
             return this;
         }
     }

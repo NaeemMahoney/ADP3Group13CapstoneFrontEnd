@@ -10,18 +10,18 @@ import za.ac.cput.entity.medication.Item;
 import za.ac.cput.util.GenericHelper;
 
 public class ItemFactory {
-    public static Item build(String itemName, String itemType, double itemPrice){
+    public static Item build(String itemName, String itemType, double itemPrice, double itemStock){
 
         //Generate ID
         String itemID = GenericHelper.IDGenerator();
 
         //Check if values are null
-        if(itemName.isEmpty() || itemPrice < 0 || itemType.isEmpty()) {
+        if(itemName.isEmpty() || itemPrice < 0 || itemStock < 0 || itemType.isEmpty()) {
             return null;
         }
 
         //Return Item
-        return new Item.Builder().itemID(itemID).itemName(itemName).itemType(itemType).itemPrice(itemPrice).builder();
+        return new Item.Builder().itemID(itemID).itemName(itemName).itemType(itemType).itemPrice(itemPrice).itemStock(itemStock).builder();
     }
 }
 

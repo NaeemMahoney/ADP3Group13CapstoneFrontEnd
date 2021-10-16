@@ -4,6 +4,9 @@ package za.ac.cput.gui.main;
 //Capstone - Front-End
 //MainGUI
 
+import za.ac.cput.gui.item.AddItemGUI;
+import za.ac.cput.gui.item.ItemMenuGUI;
+
 import java.awt.event.ActionListener;
 import java.awt.*;
 import java.awt.event.*;
@@ -89,9 +92,6 @@ public class MainGUI implements ActionListener {
         panelCenter.add(btnItem);
         panelCenter.add(btnPrescription);
 
-        //Heading
-        lblHeading.setFont(headingFont);
-
         //Adding panels to mainframe:
         mainframe.add(panelNorth, BorderLayout.NORTH);
         mainframe.add(panelSouth, BorderLayout.SOUTH);
@@ -115,5 +115,10 @@ public class MainGUI implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {}
+    public void actionPerformed(ActionEvent e) {
+        if(e.getActionCommand().equals("5. Medication")){
+            ItemMenuGUI itemMenuGUI = new ItemMenuGUI();
+            itemMenuGUI.setGUI();
+        }
+    }
 }
