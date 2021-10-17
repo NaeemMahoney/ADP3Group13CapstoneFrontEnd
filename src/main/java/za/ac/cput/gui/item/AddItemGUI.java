@@ -168,7 +168,6 @@ public class AddItemGUI implements ActionListener{
             if(typecheck && priceCheck && stockCheck){
                 double ditemPrice = Double.parseDouble(itemPrice);
                 double ditemStock = Double.parseDouble(itemStock);
-                saveItem(itemName, itemType, ditemPrice, ditemStock);
             }
 
         }
@@ -185,21 +184,5 @@ public class AddItemGUI implements ActionListener{
         }
     }
 
-    public void saveItem(String itemName, String itemType, double itemPrice, double itemStock){
-       RestTemplate restTemplate = new RestTemplate();
-       HttpHeaders headers = new HttpHeaders();
-       String url ="http://localhost:8080/item/create";
-       Item item = ItemFactory.build(itemName, itemType, itemPrice, itemStock);
-       ResponseEntity response = restTemplate.postForEntity(url, item, Item.class);
-        if (response.getStatusCode() == HttpStatus.valueOf(200)) {
-           JOptionPane.showMessageDialog(null, "Item Saved");
-            txtItemName.setText("");
-            txtItemType.setText("");
-            txtItemPrice.setText("");
-            txtItemStock.setText("");
-        } else {
-            JOptionPane.showMessageDialog(null, "Item Not Saved");
-        }
 
-    }
 }
