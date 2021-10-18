@@ -124,6 +124,16 @@ public class ItemMenuGUI implements ActionListener{
             addItemGUI.setGUI();
         }
 
+        if(e.getActionCommand().equals("Check Item")){
+            ReadItemGUI readItemGUI = new ReadItemGUI();
+            readItemGUI.setGUI();
+        }
+
+        if(e.getActionCommand().equals("Delete Item")){
+            DeleteItemGUI deleteItemGUI = new DeleteItemGUI();
+            deleteItemGUI.setGUI();
+        }
+
         if(e.getActionCommand().equals("Exit")){
             MenuFrame.dispose();
         }

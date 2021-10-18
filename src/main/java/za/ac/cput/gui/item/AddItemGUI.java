@@ -168,6 +168,8 @@ public class AddItemGUI implements ActionListener{
             if(typecheck && priceCheck && stockCheck){
                 double ditemPrice = Double.parseDouble(itemPrice);
                 double ditemStock = Double.parseDouble(itemStock);
+                httpmethods httpmethods = new httpmethods();
+                httpmethods.saveItem(itemName, itemType, ditemPrice, ditemStock);
             }
 
         }
@@ -183,6 +185,5 @@ public class AddItemGUI implements ActionListener{
             ItemFrame.dispose();
         }
     }
-
 
 }
