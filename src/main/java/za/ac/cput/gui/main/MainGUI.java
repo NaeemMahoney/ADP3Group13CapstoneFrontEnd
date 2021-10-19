@@ -4,6 +4,7 @@ package za.ac.cput.gui.main;
 //Capstone - Front-End
 //MainGUI
 
+import za.ac.cput.gui.address.AddressMenuGUI;
 import za.ac.cput.gui.item.AddItemGUI;
 import za.ac.cput.gui.item.ItemMenuGUI;
 
@@ -115,10 +116,20 @@ public class MainGUI implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        if(e.getActionCommand().equals("5. Medication")){
-            ItemMenuGUI itemMenuGUI = new ItemMenuGUI();
-            itemMenuGUI.setGUI();
+    public void actionPerformed(ActionEvent e)
+    {
+        if(e.getActionCommand().equals("1. Patients"))
+        {
+            AddressMenuGUI addressMenuGUI = new AddressMenuGUI();
+            addressMenuGUI.setGUI();
         }
+
+       if(e.getActionCommand().equals("5. Medication"))
+        {
+           ItemMenuGUI itemMenuGUI = new ItemMenuGUI();
+           itemMenuGUI.setGUI();
+        }
+
     }
+
 }
