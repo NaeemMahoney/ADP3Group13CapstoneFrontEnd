@@ -5,29 +5,30 @@ package za.ac.cput.gui.item;
 //ADP3
 //Group 13
 //Capstone - Front-End
-//ReadItemGui
+//UpdateItemGui
 
 //Imports
 import za.ac.cput.entity.medication.Item;
+import za.ac.cput.util.GenericHelper;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ReadItemGUI implements ActionListener {
+public class UpdateItemGUI implements ActionListener {
     //Initializing Components
     private JFrame ItemFrame;
     private JPanel panelNorth, panelSouth, panelEast, panelWest, panelCenter;
     private JLabel lblHeading;
-    private JLabel lblItemName, lblItemType, lblItemPrice, lblItemStock, lbItemID;
+    private JLabel lblItemName, lblItemType, lblItemPrice, lblItemStock, lblItemID;
     private JTextField txtItemName, txtItemType,txtItemPrice, txtItemStock, txtItemID;
-    private JButton btnRead, btnDelete, btnExit, btnClear;
+    private JButton btnUpdate, btnExit, btnClear, btnGet;
     private JLabel Filler1, Filler2, Filler3, Filler4, Filler5;
     private Font headingFont;
+    Item item;
 
-    //Setting Up GUI Components
-    public ReadItemGUI(){
+    public UpdateItemGUI(){
         //Font
         headingFont = new Font("Arial", Font.BOLD, 18);
 
@@ -45,22 +46,21 @@ public class ReadItemGUI implements ActionListener {
         panelCenter.setBackground(Color.LIGHT_GRAY);
 
         //Heading
-        lblHeading = new JLabel("2. Enter Item ID",JLabel.CENTER);
+        lblHeading = new JLabel("3. Update Item",JLabel.CENTER);
 
         //Labels
+        lblItemID = new JLabel("ID");
         lblItemName = new JLabel("Name:");
         lblItemPrice = new JLabel("Price:");
         lblItemType = new JLabel("Type:");
         lblItemStock = new JLabel("Stock:");
 
         //TextFields
+        txtItemID = new JTextField();
         txtItemName = new JTextField();
         txtItemPrice = new JTextField();
         txtItemType = new JTextField();
         txtItemStock = new JTextField();
-
-        //TextFields
-        txtItemID = new JTextField();
 
         //Fillers:
         Filler1 = new JLabel("===========");
@@ -75,32 +75,33 @@ public class ReadItemGUI implements ActionListener {
         Filler5.setForeground(Color.LIGHT_GRAY);
 
         //Buttons:
-        btnRead = new JButton("Read");
-        btnDelete = new JButton("Delete");
+        btnUpdate = new JButton("Update");
+        btnGet = new JButton("Get Info");
         btnClear = new JButton("Clear");
         btnExit = new JButton("Exit");
     }
 
     //Setting GUI Layout
     public void setGUI() {
-        //Panel Grids
-        panelNorth.setLayout(new GridLayout(3, 1));
+        //Panel Grid Layout
+        panelNorth.setLayout(new GridLayout(2, 1));
         panelEast.setLayout(new GridLayout(8, 1));
-        panelSouth.setLayout(new GridLayout(1, 3));
+        panelSouth.setLayout(new GridLayout(1, 4));
         panelWest.setLayout(new GridLayout(8, 1));
-        panelCenter.setLayout(new GridLayout(9, 1));
+        panelCenter.setLayout(new GridLayout(11, 1));
         panelEast.setLayout(new GridLayout(8, 1));
 
         //Adding the components to the panels:
         //Panel North:
         panelNorth.add(Filler5);
         panelNorth.add(lblHeading);
-        panelNorth.add(txtItemID);
 
         //Panel West:
         panelWest.add(Filler1);
 
         //Panel Center:
+        panelCenter.add(lblItemID);
+        panelCenter.add(txtItemID);
         panelCenter.add(lblItemName);
         panelCenter.add(txtItemName);
         panelCenter.add(lblItemType);
@@ -115,8 +116,8 @@ public class ReadItemGUI implements ActionListener {
         panelEast.add(Filler2);
 
         //Panel South:
-        panelSouth.add(btnRead);
-        panelSouth.add(btnDelete);
+        panelSouth.add(btnGet);
+        panelSouth.add(btnUpdate);
         panelSouth.add(btnClear);
         panelSouth.add(btnExit);
 
@@ -131,57 +132,96 @@ public class ReadItemGUI implements ActionListener {
         ItemFrame.add(panelWest, BorderLayout.WEST);
 
         //Telling compiler to listen for actions from the buttons:
-        btnRead.addActionListener(this);
-        btnDelete.addActionListener(this);
+        btnGet.addActionListener(this);
+        btnUpdate.addActionListener(this);
         btnClear.addActionListener(this);
         btnExit.addActionListener(this);
 
         //Set GUI:
         ItemFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         ItemFrame.pack();
-        ItemFrame.setSize(400, 400);
+        ItemFrame.setSize(450, 450);
         ItemFrame.setLocationRelativeTo(null);
         ItemFrame.setVisible(true);
     }
 
-
+    //When Update Button is clicked
     public void actionPerformed(ActionEvent e) {
-        //When Delete Button is clicked
-        if(e.getActionCommand().equals("Read")){
-
-            //Store textfield text in string
-            String id = txtItemID.getText();
+        if(e.getActionCommand().equals("Update")){
             httpmethods httpmethods = new httpmethods();
 
-            //Use String as parameter in http read method and assign result to a Item
-            Item it = httpmethods.findItem(id);
-            System.out.println(it);
+            //Store textfield text in string
+            String itemID = txtItemID.getText();
+            String itemName = txtItemName.getText();
+            String itemType = txtItemType.getText();
+            String itemPrice = txtItemPrice.getText();
+            String itemStock = txtItemStock.getText();
 
-            //Item parameters are assigned to textfields
-            txtItemName.setText(it.getItemName());
-            txtItemType.setText(it.getItemType());
-            String price = Double.toString(it.getItemPrice());
-            String stock = Double.toString(it.getItemStock());
-            txtItemPrice.setText(price);
-            txtItemStock.setText(stock);
+            //Read method
+            Item it = httpmethods.findItem(itemID);
+
+            //booleans for checking valid input
+            boolean nameCheck, priceCheck, stockCheck, typecheck;
+
+            if(itemType==null || !itemType.matches("[a-zA-Z]+")){
+                typecheck = false;
+                txtItemType.setText("Invalid Type Input");
+            }
+            else{
+                typecheck = true;
+            }
+
+            if(!itemName.matches("[a-zA-Z0-9]+")){
+                nameCheck = false;
+                txtItemName.setText("Invalid Name Input");
+            }
+            else{
+                nameCheck = true;
+            }
+
+            if(GenericHelper.validNumber(itemPrice)){
+                priceCheck = true;
+            }
+            else{
+                priceCheck = false;
+                txtItemPrice.setText("Invalid Price Input");
+            }
+
+            if(GenericHelper.validNumber(itemStock)){
+                stockCheck = true;
+            }
+            else{
+                stockCheck = false;
+                txtItemStock.setText("Invalid Stock Input");
+            }
+
+            //If all are valid then call update httpmethod
+            if(nameCheck && typecheck && priceCheck && stockCheck){
+                double ditemPrice = Double.parseDouble(itemPrice);
+                double ditemStock = Double.parseDouble(itemStock);
+                item = new Item.Builder().copy(it).itemName(itemName).itemType(itemType).itemPrice(ditemPrice).itemStock(ditemStock).builder();
+                httpmethods.updateItem(item);
+            }
+
+
         }
 
-        //When Delete Button is clicked
-        if(e.getActionCommand().equals("Delete")){
-            //Store textfield text in string
+        //When Get Info Button is clicked
+        if(e.getActionCommand().equals("Get Info")){
+            boolean idCheck;
+
+            //Use read method of readitemgui
             String id = txtItemID.getText();
             httpmethods httpmethods = new httpmethods();
+            Item it = httpmethods.findItem(id);
+            txtItemName.setText(it.getItemName());
+            txtItemType.setText(it.getItemType());
 
-            //Use String as parameter in http method
-            httpmethods.deleteItem(id);
-
-            //Show message when successfully completed
-            JOptionPane.showMessageDialog(null, "Item Deleted");
-            txtItemID.setText("");
-            txtItemName.setText("");
-            txtItemType.setText("");
-            txtItemPrice.setText("");
-            txtItemStock.setText("");
+            //Doubles are stored in string without decimals
+            String price = String.valueOf(it.getItemPrice()).split("\\.")[0];;
+            String stock = String.valueOf(it.getItemStock()).split("\\.")[0];
+            txtItemPrice.setText(price);
+            txtItemStock.setText(stock);
         }
 
         //When Clear Button is clicked

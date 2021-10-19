@@ -1,5 +1,13 @@
 package za.ac.cput.gui.item;
 
+//Na'eem Mahoney
+//218190751
+//ADP3
+//Group 13
+//Capstone - Front-End
+//DeleteItemGui
+
+//Imports
 import org.springframework.web.client.RestTemplate;
 import za.ac.cput.entity.medication.Item;
 
@@ -9,6 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class DeleteItemGUI implements ActionListener {
+    //Initializing Components
     Item item;
     private JFrame ItemFrame;
     private JPanel panelNorth, panelSouth, panelEast, panelWest, panelCenter;
@@ -18,10 +27,12 @@ public class DeleteItemGUI implements ActionListener {
     private JLabel Filler1, Filler2, Filler3, Filler4, Filler5;
     private Font headingFont;
 
+    //Setting Up GUI Components
     public DeleteItemGUI() {
         //Font
         headingFont = new Font("Arial", Font.BOLD, 18);
 
+        //Panels
         ItemFrame = new JFrame("Item: ");
         panelNorth = new JPanel();
         panelSouth = new JPanel();
@@ -62,7 +73,9 @@ public class DeleteItemGUI implements ActionListener {
 
     }
 
+    //Setting GUI Layout
     public void setGUI() {
+        //Panel Grids
         panelNorth.setLayout(new GridLayout(2, 1));
         panelEast.setLayout(new GridLayout(3, 1));
         panelSouth.setLayout(new GridLayout(1, 3));
@@ -116,17 +129,27 @@ public class DeleteItemGUI implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e){
+        //When Delete Button is clicked
         if(e.getActionCommand().equals("Delete")){
+
+            //Store textfield text in string
             String id = txtItemID.getText();
             httpmethods httpmethods = new httpmethods();
+
+            //Use String as parameter in http method
             httpmethods.deleteItem(id);
+
+            //Show message when successfully completed
             JOptionPane.showMessageDialog(null, "Item Deleted");
+            txtItemID.setText("");
         }
 
+        //When Clear Button is clicked
         if(e.getActionCommand().equals("Clear")){
             txtItemID.setText("");
         }
 
+        //When Exit Button is clicked
         if(e.getActionCommand().equals("Exit")){
             ItemFrame.dispose();
         }

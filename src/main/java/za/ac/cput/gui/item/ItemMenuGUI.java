@@ -1,12 +1,22 @@
 package za.ac.cput.gui.item;
 
+//Na'eem Mahoney
+//218190751
+//Group13
+//Capstone
+//Front End
+//ItemMenuGui
+
+//Imports
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.net.*;
 import javax.swing.*;
 
+
 public class ItemMenuGUI implements ActionListener{
+    //Initializing Components
     private JFrame MenuFrame;
     private JPanel panelNorth, panelSouth, panelEast, panelWest, panelCenter;
     private JLabel lblHeading;
@@ -15,10 +25,12 @@ public class ItemMenuGUI implements ActionListener{
     private Font headingFont;
     Color btnColor = Color.WHITE;
 
+    //Setting Up GUI Components
     public ItemMenuGUI(){
         //Font
         headingFont = new Font("Arial", Font.BOLD, 18);
 
+        //Panels
         MenuFrame = new JFrame("Item: ");
         panelNorth = new JPanel();
         panelSouth = new JPanel();
@@ -61,7 +73,9 @@ public class ItemMenuGUI implements ActionListener{
         btnExit.setBackground(btnColor);
     }
 
+    //Setting GUI Layout
     public void setGUI() {
+        //Panel Grids
         panelNorth.setLayout(new GridLayout(2, 1));
         panelEast.setLayout(new GridLayout(5, 1));
         panelSouth.setLayout(new GridLayout(1, 3));
@@ -119,17 +133,30 @@ public class ItemMenuGUI implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
+        //When Add New Item Button is clicked
         if(e.getActionCommand().equals("Add New Item")){
+            //Call AddItemGui
             AddItemGUI addItemGUI = new AddItemGUI();
             addItemGUI.setGUI();
         }
 
+        //When Check Item Button is clicked
         if(e.getActionCommand().equals("Check Item")){
+            //Call CheckItemGui
             ReadItemGUI readItemGUI = new ReadItemGUI();
             readItemGUI.setGUI();
         }
 
+        //When Update Item Button is clicked
+        if(e.getActionCommand().equals("Update Item")){
+            //Call UpdateItemGui
+            UpdateItemGUI updateItemGUI = new UpdateItemGUI();
+            updateItemGUI.setGUI();
+        }
+
+        //When Delete Item Button is clicked
         if(e.getActionCommand().equals("Delete Item")){
+            //Call DeleteItemGui
             DeleteItemGUI deleteItemGUI = new DeleteItemGUI();
             deleteItemGUI.setGUI();
         }

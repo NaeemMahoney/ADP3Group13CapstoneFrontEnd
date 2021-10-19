@@ -1,5 +1,13 @@
 package za.ac.cput.gui.item;
 
+//Na'eem Mahoney
+//218190751
+//ADP3
+//Group 13
+//Capstone - Front-End
+//AddItemGui
+
+//Imports
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -15,6 +23,7 @@ import za.ac.cput.factory.medication.ItemFactory;
 import za.ac.cput.util.GenericHelper;
 
 public class AddItemGUI implements ActionListener{
+    //Initializing Components
     private JFrame ItemFrame;
     private JPanel panelNorth, panelSouth, panelEast, panelWest, panelCenter;
     private JLabel lblHeading;
@@ -24,10 +33,12 @@ public class AddItemGUI implements ActionListener{
     private JLabel Filler1, Filler2, Filler3, Filler4, Filler5;
     private Font headingFont;
 
+    //Setting Up GUI Components
     public AddItemGUI(){
         //Font
         headingFont = new Font("Arial", Font.BOLD, 18);
 
+        //Panels
         ItemFrame = new JFrame("Item: ");
         panelNorth = new JPanel();
         panelSouth = new JPanel();
@@ -73,7 +84,9 @@ public class AddItemGUI implements ActionListener{
         btnExit = new JButton("Exit");
     }
 
+    //Setting GUI Layout
     public void setGUI() {
+        //Panel Grids
         panelNorth.setLayout(new GridLayout(2, 1));
         panelEast.setLayout(new GridLayout(8, 1));
         panelSouth.setLayout(new GridLayout(1, 3));
@@ -132,14 +145,17 @@ public class AddItemGUI implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
+        //When Save Button is clicked
         if(e.getActionCommand().equals("Save")){
 
+            //Store textfield text in string
             String itemName = txtItemName.getText();
             String itemType = txtItemType.getText();
             String itemPrice = txtItemPrice.getText();
             String itemStock = txtItemStock.getText();
 
-            boolean priceCheck, stockCheck, typecheck;
+            //booleans for checking valid input
+            boolean nameCheck, priceCheck, stockCheck, typecheck;
 
             if(itemType==null || !itemType.matches("[a-zA-Z]+")){
                 typecheck = false;
@@ -147,6 +163,14 @@ public class AddItemGUI implements ActionListener{
             }
             else{
                 typecheck = true;
+            }
+
+            if(!itemName.matches("[a-zA-Z0-9]+")){
+                nameCheck = false;
+                txtItemName.setText("Invalid Name Input");
+            }
+            else{
+                nameCheck = true;
             }
 
             if(GenericHelper.validNumber(itemPrice)){
@@ -165,7 +189,8 @@ public class AddItemGUI implements ActionListener{
                 txtItemStock.setText("Invalid Stock Input");
             }
 
-            if(typecheck && priceCheck && stockCheck){
+            //If all are valid then call save httpmethod
+            if(nameCheck && typecheck && priceCheck && stockCheck){
                 double ditemPrice = Double.parseDouble(itemPrice);
                 double ditemStock = Double.parseDouble(itemStock);
                 httpmethods httpmethods = new httpmethods();
@@ -174,6 +199,7 @@ public class AddItemGUI implements ActionListener{
 
         }
 
+        //When clear button is clicked
         if(e.getActionCommand().equals("Clear")){
             txtItemName.setText("");
             txtItemType.setText("");
@@ -181,6 +207,7 @@ public class AddItemGUI implements ActionListener{
             txtItemStock.setText("");
         }
 
+        //When exit button is clicked
         if(e.getActionCommand().equals("Exit")){
             ItemFrame.dispose();
         }

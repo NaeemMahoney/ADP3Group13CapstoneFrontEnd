@@ -1,9 +1,14 @@
 package za.ac.cput.gui.item;
 
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+//Na'eem Mahoney
+//218190751
+//ADP3
+//Group 13
+//Capstone - Front-End
+//httpmethods
+
+//Imports
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 import za.ac.cput.entity.medication.Item;
 import za.ac.cput.factory.medication.ItemFactory;
@@ -34,7 +39,7 @@ public class httpmethods {
         //Item as new HttpEntity
         HttpEntity<Item> request = new HttpEntity<>(item, headers);
 
-        //PostForEntity
+        //PostForEntity using url to create
         ResponseEntity<Item> response = restTemplate.postForEntity(url, request, Item.class);
 
         if (response.getStatusCode() == HttpStatus.valueOf(200)) {
@@ -47,13 +52,27 @@ public class httpmethods {
 
     //Delete Method with ID parameter
     public void deleteItem(String id){
+        Item h = null;
+
+        //Url used to delete Item
         String url = MainUrl+ "/delete/"+id;
-        restTemplate.delete(url);
+
+        //Applying Password and username to headers
+        headers.setBasicAuth("user", "password");
+
+        //HTTpEntity with null
+        HttpEntity<String> request = new HttpEntity<>(null, headers);
+
+        //PostForEntity - exchange with Delete method
+        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.DELETE, request, String.class);
+
     }
 
     //Find Method with ID parameter
     public Item findItem(String id){
         Item i = null;
+
+        //Url used to read Item
         String url = MainUrl+ "/read/"+id;
 
         //Applying Password and username to headers
@@ -62,9 +81,25 @@ public class httpmethods {
         //Item as new HttpEntity
         HttpEntity<Item> request = new HttpEntity<>(i, headers);
 
-        //PostForEntity
+        //PostForEntity using url to read
         ResponseEntity<Item> response = restTemplate.postForEntity(url, request, Item.class);
 
         return response.getBody();
+    }
+
+    //Update method with Item Parameter
+    public void updateItem(Item item){
+
+        //Url used to update Item
+        String url =MainUrl +"/update";
+
+        //Applying Password and username to headers
+        headers.setBasicAuth("user", "password");
+
+        //Item as new HttpEntity
+        HttpEntity<Item> request = new HttpEntity<>(item, headers);
+
+        //PostForEntity - exchange with Post method
+        ResponseEntity<Item> responseUpdate = restTemplate.exchange(url, HttpMethod.POST, request, Item.class);
     }
 }
