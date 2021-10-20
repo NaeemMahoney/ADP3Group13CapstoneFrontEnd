@@ -18,7 +18,7 @@ public class MainGUI implements ActionListener {
     private JFrame mainframe;
     private JPanel panelNorth, panelSouth, panelEast, panelWest, panelCenter;
     private JLabel lblHeading;
-    private JButton btnPatient, btnDoctor, btnReceptionist, btnItem, btnAppointment, btnPrescription;
+    private JButton btnPatient, btnDoctor, btnReceptionist, btnItem, btnAppointment, btnPrescription, btnAddress;
     private JLabel Filler1, Filler2, Filler3, Filler4, Filler5, Filler6, Filler7, Filler8, Filler9, Filler10;
     Color panAllColor = Color.LIGHT_GRAY;
     Color btnColor = Color.WHITE;
@@ -63,15 +63,17 @@ public class MainGUI implements ActionListener {
         btnItem.setBackground(btnColor);
         btnPrescription = new JButton("6. Prescriptions");
         btnPrescription.setBackground(btnColor);
+        btnAddress = new JButton("7. Address");
+        btnAddress.setBackground(btnColor);
     }
 
     //Creating the GUI
     public void setGUI() {
         panelNorth.setLayout(new GridLayout(1, 1));
         panelSouth.setLayout(new GridLayout(1, 1));
-        panelWest.setLayout(new GridLayout(6, 1));
-        panelCenter.setLayout(new GridLayout(6, 1));
-        panelEast.setLayout(new GridLayout(6, 1));
+        panelWest.setLayout(new GridLayout(7, 1));
+        panelCenter.setLayout(new GridLayout(7, 1));
+        panelEast.setLayout(new GridLayout(7, 1));
 
         //Panel North
         panelNorth.add(Filler4);
@@ -92,6 +94,7 @@ public class MainGUI implements ActionListener {
         panelCenter.add(btnAppointment);
         panelCenter.add(btnItem);
         panelCenter.add(btnPrescription);
+        panelCenter.add(btnAddress);
 
         //Adding panels to mainframe:
         mainframe.add(panelNorth, BorderLayout.NORTH);
@@ -107,6 +110,7 @@ public class MainGUI implements ActionListener {
         btnAppointment.addActionListener(this);
         btnItem.addActionListener(this);
         btnPrescription.addActionListener(this);
+        btnAddress.addActionListener(this);
 
         // Set UI:
         mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -118,16 +122,17 @@ public class MainGUI implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        if(e.getActionCommand().equals("1. Patients"))
-        {
-            AddressMenuGUI addressMenuGUI = new AddressMenuGUI();
-            addressMenuGUI.setGUI();
-        }
+
 
        if(e.getActionCommand().equals("5. Medication"))
         {
            ItemMenuGUI itemMenuGUI = new ItemMenuGUI();
            itemMenuGUI.setGUI();
+        }
+        if(e.getActionCommand().equals("7. Address"))
+        {
+            AddressMenuGUI addressMenuGUI = new AddressMenuGUI();
+            addressMenuGUI.setGUI();
         }
 
     }
