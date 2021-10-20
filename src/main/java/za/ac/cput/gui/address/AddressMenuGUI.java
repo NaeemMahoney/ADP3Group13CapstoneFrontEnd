@@ -10,7 +10,7 @@ public class AddressMenuGUI implements ActionListener
     private JFrame MenuFrame;
     private JPanel panelNorth, panelSouth, panelEast, panelWest, panelCenter;
     private JLabel lblHeading;
-    private JButton btnAddAddress, btnDeleteAddress, btnCheckAddress, btnUpdateAddress, btnGateAllAddressess, btnExit;
+    private JButton btnAddAddress, btnDeleteAddress, btnReadAddress, btnUpdateAddress, btnExit;
     private JLabel Filler1, Filler2, Filler3, Filler4, Filler5;
     private Font headingFont;
     Color btnColor = Color.WHITE;
@@ -49,14 +49,12 @@ public class AddressMenuGUI implements ActionListener
         //Buttons:
         btnAddAddress = new JButton("Create Address");
         btnAddAddress.setBackground(btnColor);
-      /*  btnCheckAddress = new JButton("Check Address");
-        btnCheckAddress.setBackground(btnColor);*/
+        btnReadAddress = new JButton("Read Address");
+        btnReadAddress.setBackground(btnColor);
         btnUpdateAddress = new JButton("Update Address");
         btnUpdateAddress.setBackground(btnColor);
         btnDeleteAddress = new JButton("Delete Address");
         btnDeleteAddress.setBackground(btnColor);
-       /* btnGateAllAddressess = new JButton("Display All Addresses");
-        btnGateAllAddressess.setBackground(btnColor);*/
         btnExit = new JButton("Exit");
         btnExit.setBackground(btnColor);
     }
@@ -78,10 +76,9 @@ public class AddressMenuGUI implements ActionListener
         //Panel Center:
         panelCenter.add(Filler3);
         panelCenter.add(btnAddAddress);
-        /*panelCenter.add(btnCheckAddress);*/
+        panelCenter.add(btnReadAddress);
         panelCenter.add(btnUpdateAddress);
         panelCenter.add(btnDeleteAddress);
-        /*panelCenter.add(btnGateAllAddressess);*/
         panelCenter.add(Filler4);
 
         //Panel East
@@ -102,10 +99,9 @@ public class AddressMenuGUI implements ActionListener
 
         //Telling compiler to listen for actions from the buttons:
         btnAddAddress.addActionListener(this);
-        /*btnCheckAddress.addActionListener(this);*/
+        btnReadAddress.addActionListener(this);
         btnUpdateAddress.addActionListener(this);
         btnDeleteAddress.addActionListener(this);
-        /*btnGateAllAddressess.addActionListener(this);*/
         btnExit.addActionListener(this);
 
         //Set GUI:
@@ -125,11 +121,11 @@ public class AddressMenuGUI implements ActionListener
             createAddressGUI.setGUI();
         }
 
-     /*   if(f.getActionCommand().equals("View All Addresses"))
+        if(f.getActionCommand().equals("Read Address"))
         {
             ViewAddress viewAddress = new ViewAddress();
             viewAddress.setGUI();
-        }*/
+        }
         if(f.getActionCommand().equals("Update Address"))
         {
             UpdateAddress updateAddress = new UpdateAddress();
