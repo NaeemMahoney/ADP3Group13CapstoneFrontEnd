@@ -113,6 +113,7 @@ public class PatientMenu implements ActionListener {
         if(e.getActionCommand().equals("Display All Patients")){
             DispalyPatients dispalyPatients = new DispalyPatients();
             dispalyPatients.setGUI();
+            MenuFrame.dispose();
         }
         if(e.getActionCommand().equals("Exit")){
             MenuFrame.dispose();
