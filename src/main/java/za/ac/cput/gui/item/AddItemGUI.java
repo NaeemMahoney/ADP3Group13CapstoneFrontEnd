@@ -186,6 +186,10 @@ public class AddItemGUI implements ActionListener{
                 double ditemStock = Double.parseDouble(itemStock);
                 httpmethods httpmethods = new httpmethods();
                 httpmethods.saveItem(itemName, itemType, ditemPrice, ditemStock);
+                txtItemName.setText("");
+                txtItemType.setText("");
+                txtItemPrice.setText("");
+                txtItemStock.setText("");
             }
 
         }

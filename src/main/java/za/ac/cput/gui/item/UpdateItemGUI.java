@@ -201,6 +201,11 @@ public class UpdateItemGUI implements ActionListener {
                 double ditemStock = Double.parseDouble(itemStock);
                 item = new Item.Builder().copy(it).itemName(itemName).itemType(itemType).itemPrice(ditemPrice).itemStock(ditemStock).builder();
                 httpmethods.updateItem(item);
+                txtItemName.setText("");
+                txtItemType.setText("");
+                txtItemPrice.setText("");
+                txtItemStock.setText("");
+                JOptionPane.showMessageDialog(null, "Item Updated");
             }
 
 
