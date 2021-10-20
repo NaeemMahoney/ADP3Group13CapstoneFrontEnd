@@ -19,8 +19,8 @@ import java.awt.event.ActionListener;
 public class DeleteItemGUI implements ActionListener {
     //Initializing Components
     Item item;
-    private JFrame ItemFrame;
-    private JPanel panelNorth, panelSouth, panelEast, panelWest, panelCenter;
+    private JFrame DeleteItemFrame;
+    private JPanel DeleteItemPanelNorth, DeleteItemPanelSouth, DeleteItemPanelEast, DeleteItemPanelWest, DeleteItemPanelCenter;
     private JLabel lblHeading, lblID;
     private JTextField txtItemID;
     private JButton btnDelete, btnExit, btnClear;
@@ -33,17 +33,17 @@ public class DeleteItemGUI implements ActionListener {
         headingFont = new Font("Arial", Font.BOLD, 18);
 
         //Panels
-        ItemFrame = new JFrame("Item: ");
-        panelNorth = new JPanel();
-        panelSouth = new JPanel();
-        panelEast = new JPanel();
-        panelWest = new JPanel();
-        panelCenter = new JPanel();
-        panelNorth.setBackground(Color.LIGHT_GRAY);
-        panelEast.setBackground(Color.LIGHT_GRAY);
-        panelSouth.setBackground(Color.LIGHT_GRAY);
-        panelWest.setBackground(Color.LIGHT_GRAY);
-        panelCenter.setBackground(Color.LIGHT_GRAY);
+        DeleteItemFrame = new JFrame("Item: ");
+        DeleteItemPanelNorth = new JPanel();
+        DeleteItemPanelSouth = new JPanel();
+        DeleteItemPanelEast = new JPanel();
+        DeleteItemPanelWest = new JPanel();
+        DeleteItemPanelCenter = new JPanel();
+        DeleteItemPanelNorth.setBackground(Color.LIGHT_GRAY);
+        DeleteItemPanelEast.setBackground(Color.LIGHT_GRAY);
+        DeleteItemPanelSouth.setBackground(Color.LIGHT_GRAY);
+        DeleteItemPanelWest.setBackground(Color.LIGHT_GRAY);
+        DeleteItemPanelCenter.setBackground(Color.LIGHT_GRAY);
 
         //Heading
         lblHeading = new JLabel("4. Delete an Item", JLabel.CENTER);
@@ -56,14 +56,14 @@ public class DeleteItemGUI implements ActionListener {
 
         //Fillers:
         Filler1 = new JLabel("===========");
-        Filler1.setForeground(Color.LIGHT_GRAY);
         Filler2 = new JLabel("===========");
-        Filler2.setForeground(Color.LIGHT_GRAY);
         Filler3 = new JLabel("================================");
-        Filler3.setForeground(Color.LIGHT_GRAY);
         Filler4 = new JLabel("================================");
-        Filler4.setForeground(Color.LIGHT_GRAY);
         Filler5 = new JLabel("================================");
+        Filler1.setForeground(Color.LIGHT_GRAY);
+        Filler2.setForeground(Color.LIGHT_GRAY);
+        Filler3.setForeground(Color.LIGHT_GRAY);
+        Filler4.setForeground(Color.LIGHT_GRAY);
         Filler5.setForeground(Color.LIGHT_GRAY);
 
         //Buttons:
@@ -76,43 +76,43 @@ public class DeleteItemGUI implements ActionListener {
     //Setting GUI Layout
     public void setGUI() {
         //Panel Grids
-        panelNorth.setLayout(new GridLayout(2, 1));
-        panelEast.setLayout(new GridLayout(3, 1));
-        panelSouth.setLayout(new GridLayout(1, 3));
-        panelWest.setLayout(new GridLayout(3, 1));
-        panelCenter.setLayout(new GridLayout(3, 1));
-        panelEast.setLayout(new GridLayout(3, 1));
+        DeleteItemPanelNorth.setLayout(new GridLayout(2, 1));
+        DeleteItemPanelEast.setLayout(new GridLayout(3, 1));
+        DeleteItemPanelSouth.setLayout(new GridLayout(1, 3));
+        DeleteItemPanelWest.setLayout(new GridLayout(3, 1));
+        DeleteItemPanelCenter.setLayout(new GridLayout(3, 1));
+        DeleteItemPanelEast.setLayout(new GridLayout(3, 1));
 
         //Adding the components to the panels:
         //Panel North:
-        panelNorth.add(Filler5);
-        panelNorth.add(lblHeading);
+        DeleteItemPanelNorth.add(Filler5);
+        DeleteItemPanelNorth.add(lblHeading);
 
         //Panel West:
-        panelWest.add(Filler1);
+        DeleteItemPanelWest.add(Filler1);
 
         //Panel Center:
-        panelCenter.add(lblID);
-        panelCenter.add(txtItemID);
-        panelCenter.add(Filler4);
+        DeleteItemPanelCenter.add(lblID);
+        DeleteItemPanelCenter.add(txtItemID);
+        DeleteItemPanelCenter.add(Filler4);
 
         //Panel East
-        panelEast.add(Filler2);
+        DeleteItemPanelEast.add(Filler2);
 
         //Panel South:
-        panelSouth.add(btnDelete);
-        panelSouth.add(btnClear);
-        panelSouth.add(btnExit);
+        DeleteItemPanelSouth.add(btnDelete);
+        DeleteItemPanelSouth.add(btnClear);
+        DeleteItemPanelSouth.add(btnExit);
 
         //Heading
         lblHeading.setFont(headingFont);
 
         //Adding panels to Customer Frame:
-        ItemFrame.add(panelNorth, BorderLayout.NORTH);
-        ItemFrame.add(panelSouth, BorderLayout.SOUTH);
-        ItemFrame.add(panelEast, BorderLayout.EAST);
-        ItemFrame.add(panelCenter, BorderLayout.CENTER);
-        ItemFrame.add(panelWest, BorderLayout.WEST);
+        DeleteItemFrame.add(DeleteItemPanelNorth, BorderLayout.NORTH);
+        DeleteItemFrame.add(DeleteItemPanelSouth, BorderLayout.SOUTH);
+        DeleteItemFrame.add(DeleteItemPanelEast, BorderLayout.EAST);
+        DeleteItemFrame.add(DeleteItemPanelCenter, BorderLayout.CENTER);
+        DeleteItemFrame.add(DeleteItemPanelWest, BorderLayout.WEST);
 
         //Telling compiler to listen for actions from the buttons:
         btnDelete.addActionListener(this);
@@ -120,11 +120,11 @@ public class DeleteItemGUI implements ActionListener {
         btnExit.addActionListener(this);
 
         //Set GUI:
-        ItemFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        ItemFrame.pack();
-        ItemFrame.setSize(400, 200);
-        ItemFrame.setLocationRelativeTo(null);
-        ItemFrame.setVisible(true);
+        DeleteItemFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        DeleteItemFrame.pack();
+        DeleteItemFrame.setSize(400, 200);
+        DeleteItemFrame.setLocationRelativeTo(null);
+        DeleteItemFrame.setVisible(true);
 
     }
 
@@ -151,7 +151,7 @@ public class DeleteItemGUI implements ActionListener {
 
         //When Exit Button is clicked
         if(e.getActionCommand().equals("Exit")){
-            ItemFrame.dispose();
+            DeleteItemFrame.dispose();
         }
     }
 

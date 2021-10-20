@@ -17,8 +17,8 @@ import java.awt.event.ActionListener;
 
 public class ReadItemGUI implements ActionListener {
     //Initializing Components
-    private JFrame ItemFrame;
-    private JPanel panelNorth, panelSouth, panelEast, panelWest, panelCenter;
+    private JFrame ReadItemFrame;
+    private JPanel ReadItemPanelNorth, ReadItemPanelSouth, ReadItemPanelEast, ReadItemPanelWest, ReadItemPanelCenter;
     private JLabel lblHeading;
     private JLabel lblItemName, lblItemType, lblItemPrice, lblItemStock, lbItemID;
     private JTextField txtItemName, txtItemType,txtItemPrice, txtItemStock, txtItemID;
@@ -32,17 +32,17 @@ public class ReadItemGUI implements ActionListener {
         headingFont = new Font("Arial", Font.BOLD, 18);
 
         //Panels
-        ItemFrame = new JFrame("Item: ");
-        panelNorth = new JPanel();
-        panelSouth = new JPanel();
-        panelEast = new JPanel();
-        panelWest = new JPanel();
-        panelCenter = new JPanel();
-        panelNorth.setBackground(Color.LIGHT_GRAY);
-        panelEast.setBackground(Color.LIGHT_GRAY);
-        panelSouth.setBackground(Color.LIGHT_GRAY);
-        panelWest.setBackground(Color.LIGHT_GRAY);
-        panelCenter.setBackground(Color.LIGHT_GRAY);
+        ReadItemFrame = new JFrame("Item: ");
+        ReadItemPanelNorth = new JPanel();
+        ReadItemPanelSouth = new JPanel();
+        ReadItemPanelEast = new JPanel();
+        ReadItemPanelWest = new JPanel();
+        ReadItemPanelCenter = new JPanel();
+        ReadItemPanelNorth.setBackground(Color.LIGHT_GRAY);
+        ReadItemPanelEast.setBackground(Color.LIGHT_GRAY);
+        ReadItemPanelSouth.setBackground(Color.LIGHT_GRAY);
+        ReadItemPanelWest.setBackground(Color.LIGHT_GRAY);
+        ReadItemPanelCenter.setBackground(Color.LIGHT_GRAY);
 
         //Heading
         lblHeading = new JLabel("2. Enter Item ID",JLabel.CENTER);
@@ -64,14 +64,14 @@ public class ReadItemGUI implements ActionListener {
 
         //Fillers:
         Filler1 = new JLabel("===========");
-        Filler1.setForeground(Color.LIGHT_GRAY);
         Filler2 = new JLabel("===========");
-        Filler2.setForeground(Color.LIGHT_GRAY);
         Filler3 = new JLabel("================================");
-        Filler3.setForeground(Color.LIGHT_GRAY);
         Filler4 = new JLabel("================================");
-        Filler4.setForeground(Color.LIGHT_GRAY);
         Filler5 = new JLabel("================================");
+        Filler1.setForeground(Color.LIGHT_GRAY);
+        Filler2.setForeground(Color.LIGHT_GRAY);
+        Filler3.setForeground(Color.LIGHT_GRAY);
+        Filler4.setForeground(Color.LIGHT_GRAY);
         Filler5.setForeground(Color.LIGHT_GRAY);
 
         //Buttons:
@@ -84,51 +84,51 @@ public class ReadItemGUI implements ActionListener {
     //Setting GUI Layout
     public void setGUI() {
         //Panel Grids
-        panelNorth.setLayout(new GridLayout(3, 1));
-        panelEast.setLayout(new GridLayout(8, 1));
-        panelSouth.setLayout(new GridLayout(1, 3));
-        panelWest.setLayout(new GridLayout(8, 1));
-        panelCenter.setLayout(new GridLayout(9, 1));
-        panelEast.setLayout(new GridLayout(8, 1));
+        ReadItemPanelNorth.setLayout(new GridLayout(3, 1));
+        ReadItemPanelEast.setLayout(new GridLayout(8, 1));
+        ReadItemPanelSouth.setLayout(new GridLayout(1, 3));
+        ReadItemPanelWest.setLayout(new GridLayout(8, 1));
+        ReadItemPanelCenter.setLayout(new GridLayout(9, 1));
+        ReadItemPanelEast.setLayout(new GridLayout(8, 1));
 
         //Adding the components to the panels:
         //Panel North:
-        panelNorth.add(Filler5);
-        panelNorth.add(lblHeading);
-        panelNorth.add(txtItemID);
+        ReadItemPanelNorth.add(Filler5);
+        ReadItemPanelNorth.add(lblHeading);
+        ReadItemPanelNorth.add(txtItemID);
 
         //Panel West:
-        panelWest.add(Filler1);
+        ReadItemPanelWest.add(Filler1);
 
         //Panel Center:
-        panelCenter.add(lblItemName);
-        panelCenter.add(txtItemName);
-        panelCenter.add(lblItemType);
-        panelCenter.add(txtItemType);
-        panelCenter.add(lblItemPrice);
-        panelCenter.add(txtItemPrice);
-        panelCenter.add(lblItemStock);
-        panelCenter.add(txtItemStock);
-        panelCenter.add(Filler4);
+        ReadItemPanelCenter.add(lblItemName);
+        ReadItemPanelCenter.add(txtItemName);
+        ReadItemPanelCenter.add(lblItemType);
+        ReadItemPanelCenter.add(txtItemType);
+        ReadItemPanelCenter.add(lblItemPrice);
+        ReadItemPanelCenter.add(txtItemPrice);
+        ReadItemPanelCenter.add(lblItemStock);
+        ReadItemPanelCenter.add(txtItemStock);
+        ReadItemPanelCenter.add(Filler4);
 
         //Panel East
-        panelEast.add(Filler2);
+        ReadItemPanelEast.add(Filler2);
 
         //Panel South:
-        panelSouth.add(btnRead);
-        panelSouth.add(btnDelete);
-        panelSouth.add(btnClear);
-        panelSouth.add(btnExit);
+        ReadItemPanelSouth.add(btnRead);
+        ReadItemPanelSouth.add(btnDelete);
+        ReadItemPanelSouth.add(btnClear);
+        ReadItemPanelSouth.add(btnExit);
 
         //Heading
         lblHeading.setFont(headingFont);
 
         //Adding panels to Customer Frame:
-        ItemFrame.add(panelNorth, BorderLayout.NORTH);
-        ItemFrame.add(panelSouth, BorderLayout.SOUTH);
-        ItemFrame.add(panelEast, BorderLayout.EAST);
-        ItemFrame.add(panelCenter, BorderLayout.CENTER);
-        ItemFrame.add(panelWest, BorderLayout.WEST);
+        ReadItemFrame.add(ReadItemPanelNorth, BorderLayout.NORTH);
+        ReadItemFrame.add(ReadItemPanelSouth, BorderLayout.SOUTH);
+        ReadItemFrame.add(ReadItemPanelEast, BorderLayout.EAST);
+        ReadItemFrame.add(ReadItemPanelCenter, BorderLayout.CENTER);
+        ReadItemFrame.add(ReadItemPanelWest, BorderLayout.WEST);
 
         //Telling compiler to listen for actions from the buttons:
         btnRead.addActionListener(this);
@@ -137,11 +137,11 @@ public class ReadItemGUI implements ActionListener {
         btnExit.addActionListener(this);
 
         //Set GUI:
-        ItemFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        ItemFrame.pack();
-        ItemFrame.setSize(400, 400);
-        ItemFrame.setLocationRelativeTo(null);
-        ItemFrame.setVisible(true);
+        ReadItemFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        ReadItemFrame.pack();
+        ReadItemFrame.setSize(400, 400);
+        ReadItemFrame.setLocationRelativeTo(null);
+        ReadItemFrame.setVisible(true);
     }
 
 
@@ -195,7 +195,7 @@ public class ReadItemGUI implements ActionListener {
 
         //When Exit Button is clicked
         if(e.getActionCommand().equals("Exit")){
-            ItemFrame.dispose();
+            ReadItemFrame.dispose();
         }
     }
 }

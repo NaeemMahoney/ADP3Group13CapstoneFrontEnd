@@ -37,12 +37,12 @@ public class httpmethods {
         headers.setBasicAuth("user", "password");
 
         //Item as new HttpEntity
-        HttpEntity<Item> request = new HttpEntity<>(item, headers);
+        HttpEntity<Item> httpEntityCreate = new HttpEntity<>(item, headers);
 
         //PostForEntity using url to create
-        ResponseEntity<Item> response = restTemplate.postForEntity(url, request, Item.class);
+        ResponseEntity<Item> responseCreate = restTemplate.postForEntity(url, httpEntityCreate, Item.class);
 
-        if (response.getStatusCode() == HttpStatus.valueOf(200)) {
+        if (responseCreate.getStatusCode() == HttpStatus.valueOf(200)) {
             JOptionPane.showMessageDialog(null, "Item Saved");
         } else {
             JOptionPane.showMessageDialog(null, "Item Not Saved");
@@ -61,10 +61,10 @@ public class httpmethods {
         headers.setBasicAuth("user", "password");
 
         //HTTpEntity with null
-        HttpEntity<String> request = new HttpEntity<>(null, headers);
+        HttpEntity<String> httpEntityDelete = new HttpEntity<>(null, headers);
 
         //PostForEntity - exchange with Delete method
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.DELETE, request, String.class);
+        ResponseEntity<String> responseDelete = restTemplate.exchange(url, HttpMethod.DELETE, httpEntityDelete, String.class);
 
     }
 
@@ -79,12 +79,12 @@ public class httpmethods {
         headers.setBasicAuth("user", "password");
 
         //Item as new HttpEntity
-        HttpEntity<Item> request = new HttpEntity<>(i, headers);
+        HttpEntity<Item> httpEntityRead = new HttpEntity<>(i, headers);
 
         //PostForEntity using url to read
-        ResponseEntity<Item> response = restTemplate.postForEntity(url, request, Item.class);
+        ResponseEntity<Item> responseRead = restTemplate.postForEntity(url, httpEntityRead, Item.class);
 
-        return response.getBody();
+        return responseRead.getBody();
     }
 
     //Update method with Item Parameter
@@ -97,9 +97,9 @@ public class httpmethods {
         headers.setBasicAuth("user", "password");
 
         //Item as new HttpEntity
-        HttpEntity<Item> request = new HttpEntity<>(item, headers);
+        HttpEntity<Item> httpEntityUpdate = new HttpEntity<>(item, headers);
 
         //PostForEntity - exchange with Post method
-        ResponseEntity<Item> responseUpdate = restTemplate.exchange(url, HttpMethod.POST, request, Item.class);
+        ResponseEntity<Item> responseUpdate = restTemplate.exchange(url, HttpMethod.POST, httpEntityUpdate, Item.class);
     }
 }

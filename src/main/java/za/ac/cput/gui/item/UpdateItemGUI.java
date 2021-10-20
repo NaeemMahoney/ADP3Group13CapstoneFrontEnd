@@ -18,8 +18,8 @@ import java.awt.event.ActionListener;
 
 public class UpdateItemGUI implements ActionListener {
     //Initializing Components
-    private JFrame ItemFrame;
-    private JPanel panelNorth, panelSouth, panelEast, panelWest, panelCenter;
+    private JFrame UpdateItemFrame;
+    private JPanel UpdateItemPanelNorth, UpdateItemPanelSouth, UpdateItemPanelEast, UpdateItemPanelWest, UpdateItemPanelCenter;
     private JLabel lblHeading;
     private JLabel lblItemName, lblItemType, lblItemPrice, lblItemStock, lblItemID;
     private JTextField txtItemName, txtItemType,txtItemPrice, txtItemStock, txtItemID;
@@ -33,17 +33,17 @@ public class UpdateItemGUI implements ActionListener {
         headingFont = new Font("Arial", Font.BOLD, 18);
 
         //Panels
-        ItemFrame = new JFrame("Item: ");
-        panelNorth = new JPanel();
-        panelSouth = new JPanel();
-        panelEast = new JPanel();
-        panelWest = new JPanel();
-        panelCenter = new JPanel();
-        panelNorth.setBackground(Color.LIGHT_GRAY);
-        panelEast.setBackground(Color.LIGHT_GRAY);
-        panelSouth.setBackground(Color.LIGHT_GRAY);
-        panelWest.setBackground(Color.LIGHT_GRAY);
-        panelCenter.setBackground(Color.LIGHT_GRAY);
+        UpdateItemFrame = new JFrame("Item: ");
+        UpdateItemPanelNorth = new JPanel();
+        UpdateItemPanelSouth = new JPanel();
+        UpdateItemPanelEast = new JPanel();
+        UpdateItemPanelWest = new JPanel();
+        UpdateItemPanelCenter = new JPanel();
+        UpdateItemPanelNorth.setBackground(Color.LIGHT_GRAY);
+        UpdateItemPanelEast.setBackground(Color.LIGHT_GRAY);
+        UpdateItemPanelSouth.setBackground(Color.LIGHT_GRAY);
+        UpdateItemPanelWest.setBackground(Color.LIGHT_GRAY);
+        UpdateItemPanelCenter.setBackground(Color.LIGHT_GRAY);
 
         //Heading
         lblHeading = new JLabel("3. Update Item",JLabel.CENTER);
@@ -64,14 +64,14 @@ public class UpdateItemGUI implements ActionListener {
 
         //Fillers:
         Filler1 = new JLabel("===========");
-        Filler1.setForeground(Color.LIGHT_GRAY);
         Filler2 = new JLabel("===========");
-        Filler2.setForeground(Color.LIGHT_GRAY);
         Filler3 = new JLabel("================================");
-        Filler3.setForeground(Color.LIGHT_GRAY);
         Filler4 = new JLabel("================================");
-        Filler4.setForeground(Color.LIGHT_GRAY);
         Filler5 = new JLabel("================================");
+        Filler1.setForeground(Color.LIGHT_GRAY);
+        Filler2.setForeground(Color.LIGHT_GRAY);
+        Filler3.setForeground(Color.LIGHT_GRAY);
+        Filler4.setForeground(Color.LIGHT_GRAY);
         Filler5.setForeground(Color.LIGHT_GRAY);
 
         //Buttons:
@@ -84,52 +84,52 @@ public class UpdateItemGUI implements ActionListener {
     //Setting GUI Layout
     public void setGUI() {
         //Panel Grid Layout
-        panelNorth.setLayout(new GridLayout(2, 1));
-        panelEast.setLayout(new GridLayout(8, 1));
-        panelSouth.setLayout(new GridLayout(1, 4));
-        panelWest.setLayout(new GridLayout(8, 1));
-        panelCenter.setLayout(new GridLayout(11, 1));
-        panelEast.setLayout(new GridLayout(8, 1));
+        UpdateItemPanelNorth.setLayout(new GridLayout(2, 1));
+        UpdateItemPanelEast.setLayout(new GridLayout(8, 1));
+        UpdateItemPanelSouth.setLayout(new GridLayout(1, 4));
+        UpdateItemPanelWest.setLayout(new GridLayout(8, 1));
+        UpdateItemPanelCenter.setLayout(new GridLayout(11, 1));
+        UpdateItemPanelEast.setLayout(new GridLayout(8, 1));
 
         //Adding the components to the panels:
         //Panel North:
-        panelNorth.add(Filler5);
-        panelNorth.add(lblHeading);
+        UpdateItemPanelNorth.add(Filler5);
+        UpdateItemPanelNorth.add(lblHeading);
 
         //Panel West:
-        panelWest.add(Filler1);
+        UpdateItemPanelWest.add(Filler1);
 
         //Panel Center:
-        panelCenter.add(lblItemID);
-        panelCenter.add(txtItemID);
-        panelCenter.add(lblItemName);
-        panelCenter.add(txtItemName);
-        panelCenter.add(lblItemType);
-        panelCenter.add(txtItemType);
-        panelCenter.add(lblItemPrice);
-        panelCenter.add(txtItemPrice);
-        panelCenter.add(lblItemStock);
-        panelCenter.add(txtItemStock);
-        panelCenter.add(Filler4);
+        UpdateItemPanelCenter.add(lblItemID);
+        UpdateItemPanelCenter.add(txtItemID);
+        UpdateItemPanelCenter.add(lblItemName);
+        UpdateItemPanelCenter.add(txtItemName);
+        UpdateItemPanelCenter.add(lblItemType);
+        UpdateItemPanelCenter.add(txtItemType);
+        UpdateItemPanelCenter.add(lblItemPrice);
+        UpdateItemPanelCenter.add(txtItemPrice);
+        UpdateItemPanelCenter.add(lblItemStock);
+        UpdateItemPanelCenter.add(txtItemStock);
+        UpdateItemPanelCenter.add(Filler4);
 
         //Panel East
-        panelEast.add(Filler2);
+        UpdateItemPanelEast.add(Filler2);
 
         //Panel South:
-        panelSouth.add(btnGet);
-        panelSouth.add(btnUpdate);
-        panelSouth.add(btnClear);
-        panelSouth.add(btnExit);
+        UpdateItemPanelSouth.add(btnGet);
+        UpdateItemPanelSouth.add(btnUpdate);
+        UpdateItemPanelSouth.add(btnClear);
+        UpdateItemPanelSouth.add(btnExit);
 
         //Heading
         lblHeading.setFont(headingFont);
 
         //Adding panels to Customer Frame:
-        ItemFrame.add(panelNorth, BorderLayout.NORTH);
-        ItemFrame.add(panelSouth, BorderLayout.SOUTH);
-        ItemFrame.add(panelEast, BorderLayout.EAST);
-        ItemFrame.add(panelCenter, BorderLayout.CENTER);
-        ItemFrame.add(panelWest, BorderLayout.WEST);
+        UpdateItemFrame.add(UpdateItemPanelNorth, BorderLayout.NORTH);
+        UpdateItemFrame.add(UpdateItemPanelSouth, BorderLayout.SOUTH);
+        UpdateItemFrame.add(UpdateItemPanelEast, BorderLayout.EAST);
+        UpdateItemFrame.add(UpdateItemPanelCenter, BorderLayout.CENTER);
+        UpdateItemFrame.add(UpdateItemPanelWest, BorderLayout.WEST);
 
         //Telling compiler to listen for actions from the buttons:
         btnGet.addActionListener(this);
@@ -138,11 +138,11 @@ public class UpdateItemGUI implements ActionListener {
         btnExit.addActionListener(this);
 
         //Set GUI:
-        ItemFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        ItemFrame.pack();
-        ItemFrame.setSize(450, 450);
-        ItemFrame.setLocationRelativeTo(null);
-        ItemFrame.setVisible(true);
+        UpdateItemFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        UpdateItemFrame.pack();
+        UpdateItemFrame.setSize(450, 450);
+        UpdateItemFrame.setLocationRelativeTo(null);
+        UpdateItemFrame.setVisible(true);
     }
 
     //When Update Button is clicked
@@ -235,7 +235,7 @@ public class UpdateItemGUI implements ActionListener {
 
         //When Exit Button is clicked
         if(e.getActionCommand().equals("Exit")){
-            ItemFrame.dispose();
+            UpdateItemFrame.dispose();
         }
     }
 }
