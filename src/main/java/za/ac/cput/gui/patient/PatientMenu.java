@@ -1,5 +1,7 @@
 package za.ac.cput.gui.patient;
 
+import za.ac.cput.gui.main.MainGUI;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -91,18 +93,22 @@ public class PatientMenu implements ActionListener {
         if(e.getActionCommand().equals("Add New Patient")){
             AddPatient addPatient = new AddPatient();
             addPatient.setGUI();
+            MenuFrame.dispose();
         }
         if(e.getActionCommand().equals("Check A Patient")){
             CheckPatient checkPatient = new CheckPatient();
             checkPatient.setGUI();
+            MenuFrame.dispose();
         }
         if(e.getActionCommand().equals("Update Patients Details")){
             UpdatePatient updatePatient = new UpdatePatient();
-            //updatePatient.setGUI();
+            updatePatient.setGUI();
+            MenuFrame.dispose();
         }
         if(e.getActionCommand().equals("Delete Patient")){
             DeletePatient deletePatient = new DeletePatient();
             deletePatient.setGUI();
+            MenuFrame.dispose();
         }
         if(e.getActionCommand().equals("Display All Patients")){
             DispalyPatients dispalyPatients = new DispalyPatients();
@@ -110,6 +116,8 @@ public class PatientMenu implements ActionListener {
         }
         if(e.getActionCommand().equals("Exit")){
             MenuFrame.dispose();
+            MainGUI mainGUI = new MainGUI();
+            mainGUI.setGUI();
         }
     }
 }
