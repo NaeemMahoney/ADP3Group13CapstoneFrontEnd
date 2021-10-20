@@ -161,6 +161,11 @@ public class ItemMenuGUI implements ActionListener{
             deleteItemGUI.setGUI();
         }
 
+        if(e.getActionCommand().equals("Display All Items")){
+            GetAllItemsGui getAllItemsGui = new GetAllItemsGui();
+            getAllItemsGui.setGUI();
+        }
+
         if(e.getActionCommand().equals("Exit")){
             MenuFrame.dispose();
         }

@@ -14,6 +14,8 @@ import za.ac.cput.entity.medication.Item;
 import za.ac.cput.factory.medication.ItemFactory;
 
 import javax.swing.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class httpmethods {
 
@@ -101,5 +103,36 @@ public class httpmethods {
 
         //PostForEntity - exchange with Post method
         ResponseEntity<Item> responseUpdate = restTemplate.exchange(url, HttpMethod.POST, httpEntityUpdate, Item.class);
+    }
+
+    //Get All method with Set Parameter
+    public Set<Item> getItems(){
+
+        //Create new Set
+        Set<Item> itemsSet = new HashSet<>();
+
+        //Create Array
+        Item[] items;
+
+        //Url used to get All Items
+        String url = MainUrl+"/getall";
+
+        //Applying Password and username to headers
+        headers.setBasicAuth("user","password");
+
+        //HttpEntity
+        HttpEntity<String> httpEntityGetAll = new HttpEntity<>(null, headers);
+
+        //ResponseEntity - exchange
+        ResponseEntity<Item[]> responseGetAll =restTemplate.exchange(url, HttpMethod.GET, httpEntityGetAll, Item[].class);
+
+        //Store response body in array
+        items = responseGetAll.getBody();
+
+        //loop through array and add each item into the set
+        for (Item item : items){
+            itemsSet.add(item);
+        }
+        return itemsSet;
     }
 }
