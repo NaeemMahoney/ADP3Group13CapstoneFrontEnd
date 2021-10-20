@@ -22,7 +22,7 @@ public class AddPatient implements ActionListener {
 
         headingFont = new Font("Arial", Font.BOLD, 18);
 
-        AddPatientFrame = new JFrame("Item: ");
+        AddPatientFrame = new JFrame("Patient: ");
         panelNorth = new JPanel();
         panelSouth = new JPanel();
         panelCenter = new JPanel();

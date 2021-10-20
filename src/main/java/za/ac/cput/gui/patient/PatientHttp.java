@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class PatientHttp {
 
     @Autowired
-    private TestRestTemplate restTemplate;
+    private TestRestTemplate restTemplate = new TestRestTemplate();
 
     private HttpHeaders httpHeaders = new HttpHeaders();
     private final String patientURL = "http://localhost:8080/patient";
