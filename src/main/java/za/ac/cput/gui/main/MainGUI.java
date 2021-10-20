@@ -5,6 +5,7 @@ package za.ac.cput.gui.main;
 //MainGUI
 
 import za.ac.cput.gui.address.AddressMenuGUI;
+import za.ac.cput.gui.appointment.AppointmentMenuGUI;
 import za.ac.cput.gui.item.AddItemGUI;
 import za.ac.cput.gui.item.ItemMenuGUI;
 import za.ac.cput.gui.patient.PatientMenu;
@@ -130,6 +131,12 @@ public class MainGUI implements ActionListener {
             patientMenu.setGUI();
             mainframe.dispose();
         }
+
+        if (e.getActionCommand().equals("4. Appointments")) {
+            AppointmentMenuGUI appointmentMenuGUI = new AppointmentMenuGUI();
+            appointmentMenuGUI.setGUI();
+        }
+
        if(e.getActionCommand().equals("5. Medication"))
         {
            ItemMenuGUI itemMenuGUI = new ItemMenuGUI();
