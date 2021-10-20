@@ -1,6 +1,9 @@
 package za.ac.cput.gui.address;
 
 
+import za.ac.cput.client.Address;
+import za.ac.cput.client.AddressClient;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -126,7 +129,18 @@ public class CreateAddress implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent f)
     {
-        if(f.getActionCommand().equals("Create")){}
+        if(f.getActionCommand().equals("Create")){
+
+//            private JTextField txtHouseNumber,  txtStreet,txtCity, txtZipCode;
+            Address address = new Address();
+            address.setStreetName(txtStreet.getText());
+            address.setSuburb(txtCity.getText());
+            address.setHouseNumber(txtHouseNumber.getText());
+            address.setPostalCode(txtZipCode.getText());
+
+            AddressClient client = new AddressClient();
+            client.createAddress(address);
+        }
 
     }
 }
