@@ -1,28 +1,35 @@
 package za.ac.cput.gui.patient;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import za.ac.cput.entity.person.Patient;
+import za.ac.cput.factory.person.PatientFactory;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class PatientHttp {
-    private TestRestTemplate restTemplate = new TestRestTemplate();
+
+    @Autowired
+    private TestRestTemplate restTemplate;
+
     private HttpHeaders httpHeaders = new HttpHeaders();
     private final String patientURL = "http://localhost:8080/patient";
 
     private String username = "user";
     private String password = "password";
-    public void save(Patient patient){
+    public void save(String name, String lastName, String contactNumber, String addressNumber){
+        Patient patient = PatientFactory.build(name,lastName,contactNumber,addressNumber);
         String url = patientURL + "/create";
         httpHeaders.setBasicAuth(username, password);
         HttpEntity<Patient> httpEntity = new HttpEntity<>(patient, httpHeaders);
-        ResponseEntity<Patient> responseEntity = restTemplate.exchange(url, HttpMethod.POST, httpEntity, Patient.class);
+        ResponseEntity<Patient> responseEntity = restTemplate.postForEntity(url, patient, Patient.class);
         patient = responseEntity.getBody();
     }
     public String check(String patientNumber){

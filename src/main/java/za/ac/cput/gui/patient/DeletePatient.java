@@ -59,7 +59,7 @@ public class DeletePatient implements ActionListener {
         //Set GUI:
         PatientsDeleteFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         PatientsDeleteFrame.pack();
-        PatientsDeleteFrame.setSize(400, 400);
+        PatientsDeleteFrame.setSize(350, 350);
         PatientsDeleteFrame.setLocationRelativeTo(null);
         PatientsDeleteFrame.setVisible(true);
     }
@@ -76,6 +76,8 @@ public class DeletePatient implements ActionListener {
 
         if(e.getActionCommand().equals("Exit")){
             PatientsDeleteFrame.dispose();
+            PatientMenu patientMenu = new PatientMenu();
+            patientMenu.setGUI();
         }
     }
 }

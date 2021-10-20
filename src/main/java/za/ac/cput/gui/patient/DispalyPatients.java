@@ -80,6 +80,8 @@ public class DispalyPatients implements ActionListener {
 
         if(e.getActionCommand().equals("Exit")){
             PatientsDisplayFrame.dispose();
+            PatientMenu patientMenu = new PatientMenu();
+            patientMenu.setGUI();
         }
     }
 }

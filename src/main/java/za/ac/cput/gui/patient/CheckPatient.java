@@ -64,7 +64,7 @@ public class CheckPatient implements ActionListener {
         //Set GUI:
         PatientsDisplayFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         PatientsDisplayFrame.pack();
-        PatientsDisplayFrame.setSize(400, 400);
+        PatientsDisplayFrame.setSize(350, 350);
         PatientsDisplayFrame.setLocationRelativeTo(null);
         PatientsDisplayFrame.setVisible(true);
     }
@@ -82,6 +82,8 @@ public class CheckPatient implements ActionListener {
 
         if(e.getActionCommand().equals("Exit")){
             PatientsDisplayFrame.dispose();
+            PatientMenu patientMenu = new PatientMenu();
+            patientMenu.setGUI();
         }
     }
 }

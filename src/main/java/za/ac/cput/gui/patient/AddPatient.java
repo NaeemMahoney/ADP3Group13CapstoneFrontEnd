@@ -81,7 +81,7 @@ public class AddPatient implements ActionListener {
 
         AddPatientFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         AddPatientFrame.pack();
-        AddPatientFrame.setSize(400, 400);
+        AddPatientFrame.setSize(350, 350);
         AddPatientFrame.setLocationRelativeTo(null);
         AddPatientFrame.setVisible(true);
     }
@@ -94,11 +94,11 @@ public class AddPatient implements ActionListener {
             String cell = txtContactNumber.getText();
             String addressNumber = txtAddressNumber.getText();
 
-            Patient patient = PatientFactory.build(name,lastname,cell,addressNumber);
+
 
             PatientHttp patientHttp = new PatientHttp();
 
-            patientHttp.save(patient);
+            patientHttp.save(name,lastname,cell,addressNumber);
 
 
         }
@@ -113,6 +113,8 @@ public class AddPatient implements ActionListener {
 
         if(e.getActionCommand().equals("Exit")){
             AddPatientFrame.dispose();
+            PatientMenu patientMenu = new PatientMenu();
+            patientMenu.setGUI();
         }
     }
 }
