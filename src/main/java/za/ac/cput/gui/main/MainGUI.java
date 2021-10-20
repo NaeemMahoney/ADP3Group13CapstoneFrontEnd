@@ -7,6 +7,7 @@ package za.ac.cput.gui.main;
 import za.ac.cput.gui.address.AddressMenuGUI;
 import za.ac.cput.gui.item.AddItemGUI;
 import za.ac.cput.gui.item.ItemMenuGUI;
+import za.ac.cput.gui.patient.PatientMenu;
 
 import java.awt.event.ActionListener;
 import java.awt.*;
@@ -120,10 +121,15 @@ public class MainGUI implements ActionListener {
     }
 
     @Override
+
     public void actionPerformed(ActionEvent e)
     {
-
-
+       if(e.getActionCommand().equals("1. Patients"))
+        {
+            PatientMenu patientMenu = new PatientMenu();
+            patientMenu.setGUI();
+            mainframe.dispose();
+        }
        if(e.getActionCommand().equals("5. Medication"))
         {
            ItemMenuGUI itemMenuGUI = new ItemMenuGUI();
@@ -134,6 +140,7 @@ public class MainGUI implements ActionListener {
             AddressMenuGUI addressMenuGUI = new AddressMenuGUI();
             addressMenuGUI.setGUI();
         }
+    
 
     }
 
