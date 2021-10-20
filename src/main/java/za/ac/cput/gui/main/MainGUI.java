@@ -6,6 +6,9 @@ package za.ac.cput.gui.main;
 
 import za.ac.cput.gui.item.AddItemGUI;
 import za.ac.cput.gui.item.ItemMenuGUI;
+import za.ac.cput.gui.prescription.AddprescriptionGui;
+import za.ac.cput.gui.prescription.PrescriptionMenuGui;
+
 
 import java.awt.event.ActionListener;
 import java.awt.*;
@@ -109,16 +112,22 @@ public class MainGUI implements ActionListener {
 
         // Set UI:
         mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainframe.setSize(400,400);
+        mainframe.setSize(400, 400);
         mainframe.setLocationRelativeTo(null);
         mainframe.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getActionCommand().equals("5. Medication")){
+        if (e.getActionCommand().equals("5. Medication")) {
             ItemMenuGUI itemMenuGUI = new ItemMenuGUI();
             itemMenuGUI.setGUI();
+
+        } else if (e.getActionCommand().equals("6. Prescriptions")) {
+            PrescriptionMenuGui prescriptionMenuGui = new PrescriptionMenuGui();
+            prescriptionMenuGui.setGUI();
         }
+
     }
 }
+
