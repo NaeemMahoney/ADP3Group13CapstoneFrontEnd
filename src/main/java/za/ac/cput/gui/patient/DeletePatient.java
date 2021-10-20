@@ -59,7 +59,7 @@ public class DeletePatient implements ActionListener {
         //Set GUI:
         PatientsDeleteFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         PatientsDeleteFrame.pack();
-        PatientsDeleteFrame.setSize(350, 350);
+        PatientsDeleteFrame.setSize(350, 300);
         PatientsDeleteFrame.setLocationRelativeTo(null);
         PatientsDeleteFrame.setVisible(true);
     }

@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class PatientHttp {
 
     @Autowired
-    private TestRestTemplate restTemplate = new TestRestTemplate();
+    private TestRestTemplate testRestTemplate = new TestRestTemplate();
 
     private HttpHeaders httpHeaders = new HttpHeaders();
     private final String patientURL = "http://localhost:8080/patient";
@@ -29,15 +29,14 @@ public class PatientHttp {
         String url = patientURL + "/create";
         httpHeaders.setBasicAuth(username, password);
         HttpEntity<Patient> httpEntity = new HttpEntity<>(patient, httpHeaders);
-        ResponseEntity<Patient> responseEntity = restTemplate.postForEntity(url, patient, Patient.class);
+        ResponseEntity<Patient> responseEntity = testRestTemplate.postForEntity(url, httpEntity, Patient.class);
         patient = responseEntity.getBody();
     }
     public String check(String patientNumber){
-        Patient patient = null;
         String url = patientURL + "/read/" +patientNumber;
         httpHeaders.setBasicAuth(username, password);
-        HttpEntity<Patient> request = new HttpEntity<>(patient, httpHeaders);
-        ResponseEntity<Patient> responseCreate = restTemplate.postForEntity(url, request, Patient.class);
+        HttpEntity<Patient> request = new HttpEntity<>(null, httpHeaders);
+        ResponseEntity<Patient> responseCreate = testRestTemplate.postForEntity(url, request, Patient.class);
         return responseCreate.getBody().getPatientNumber() + responseCreate.getBody().getFirstName()
                 + responseCreate.getBody().getLastName();
     }
@@ -45,19 +44,21 @@ public class PatientHttp {
         String url = patientURL + "/getall";
         HttpHeaders header = new HttpHeaders();
         HttpEntity<String> httpEntity = new HttpEntity<>(null, header);
-        ResponseEntity<String> responseGetAll = restTemplate.withBasicAuth(username, password).exchange(url, HttpMethod.GET, httpEntity, String.class);
+        ResponseEntity<String> responseGetAll = testRestTemplate.withBasicAuth(username, password).exchange(url, HttpMethod.GET, httpEntity, String.class);
          return responseGetAll.getBody();
     }
-    public void Update(Patient patient){
-        Patient updatedPatient = new Patient.Builder().copy(patient).setPatientNumber("").build();
+    public void Update(Patient patient, String name, String lastName,String contactNumber,String addressNumber){
+        Patient updatedPatient = new Patient.Builder().copy(patient)
+                .setFirstName(name).setLastName(lastName)
+                .setContactNumber(contactNumber).setAddressNumber(addressNumber).build();
         String url = patientURL + "/update";
         httpHeaders.setBasicAuth(username, password);
         HttpEntity<Patient> httpEntity = new HttpEntity<>(updatedPatient, httpHeaders);
-        ResponseEntity<Patient> responseUpdate = restTemplate.exchange(url, HttpMethod.POST, httpEntity, Patient.class);
+        ResponseEntity<Patient> responseUpdate = testRestTemplate.exchange(url, HttpMethod.POST, httpEntity, Patient.class);
     }
     public void delete(String patientNumber){
         String url = patientURL + "/delete/" + patientNumber;
-        restTemplate.delete(url);
+        testRestTemplate.delete(url);
     }
 
 }

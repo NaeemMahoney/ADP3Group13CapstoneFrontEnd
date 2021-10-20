@@ -7,7 +7,9 @@ import javax.persistence.Id;
 public class Patient {
     @Id
     private String patientNumber;
-    private String addressNumber, firstName, lastName, contactNumber;
+    private String  firstName, lastName, addressNumber, contactNumber;
+
+    private Patient (){}
 
     public Patient(Builder builder){
         this.patientNumber = builder.patientNumber;
@@ -39,7 +41,7 @@ public class Patient {
 
     //builder pattern
     public static class Builder{
-        private String patientNumber,addressNumber ,firstName, lastName, contactNumber;
+        private String patientNumber,firstName, lastName,addressNumber , contactNumber;
 
         public Builder setPatientNumber(String patientNumber) {
             this.patientNumber = patientNumber;
@@ -71,11 +73,11 @@ public class Patient {
         }
 
         public Builder copy(Patient patient){
-            this.contactNumber = patient.contactNumber;
             this.patientNumber = patient.patientNumber;
-            this.addressNumber = patient.addressNumber;
             this.firstName = patient.firstName;
             this.lastName = patient.lastName;
+            this.addressNumber = patient.addressNumber;
+            this.contactNumber = patient.contactNumber;
             return this;
         }
 
@@ -85,9 +87,9 @@ public class Patient {
     public String toString() {
         return "Patient{" +
                 "patientNumber='" + patientNumber + '\'' +
-                "addressNumber='" + addressNumber + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", lastName='" + lastName+ '\''+
+                "addressNumber='" + addressNumber + '\'' +
                 ", contactNumber='" + contactNumber + '\'' +
                 '}';
     }

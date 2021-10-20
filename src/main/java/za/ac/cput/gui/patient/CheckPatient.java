@@ -28,7 +28,7 @@ public class CheckPatient implements ActionListener {
         lblHeading = new JLabel("Requested Patient",JLabel.CENTER);
         lblPatientNumber = new JLabel("Patient Number:");
 
-        taCheck = new TextArea("PatientNumber/tName/tSurname/n");
+        taCheck = new TextArea("PatientNumber\tName\tSurname\n");
 
         txtPatientNumber = new TextField("");
 
